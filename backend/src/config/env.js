@@ -12,5 +12,5 @@ module.exports = {
   },
   storePhone: process.env.STORE_PHONE || '918209524367',
   storeName: process.env.STORE_NAME || 'Neerza Amul Ice Cream Parlour',
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+  frontendUrl: process.env.FRONTEND_URL ? process.env.FRONTEND_URL.split(',') : ['http://localhost:3000'],
 };
