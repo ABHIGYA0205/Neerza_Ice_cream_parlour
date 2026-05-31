@@ -61,7 +61,7 @@ export default function PromoBanners() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative aspect-[21/9] md:aspect-[3/1]"
+              className="relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[3/1]"
             >
               <motion.div
                 initial={{ scale: 1.05 }}
@@ -77,24 +77,24 @@ export default function PromoBanners() {
                 />
               </motion.div>
               <div className={`absolute inset-0 bg-gradient-to-r ${banners[current].gradient}`} />
-              <div className="absolute inset-0 flex items-center px-8 md:px-14">
+              <div className="absolute inset-0 flex items-center px-5 md:px-14">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="max-w-lg"
+                  className="max-w-[85%] sm:max-w-lg"
                 >
-                  <h3 className="text-2xl md:text-5xl font-bold text-white font-[family-name:var(--font-heading)] mb-3 leading-tight tracking-tight">
+                  <h3 className="text-xl sm:text-2xl md:text-5xl font-bold text-white font-[family-name:var(--font-heading)] mb-1 sm:mb-3 leading-tight tracking-tight line-clamp-2">
                     {banners[current].title}
                   </h3>
-                  <p className="text-white/90 text-sm md:text-lg mb-6 font-medium">
+                  <p className="text-white/90 text-xs sm:text-sm md:text-lg mb-3 sm:mb-6 font-medium line-clamp-2 sm:line-clamp-none">
                     {banners[current].subtitle}
                   </p>
                   <Link
                     href={banners[current].link}
-                    className="inline-flex items-center gap-2 bg-white text-primary text-sm font-bold px-6 py-3 rounded-full shadow-lg shadow-white/20 hover:scale-105 hover:bg-primary-50 hover:shadow-xl transition-all duration-300"
+                    className="inline-flex items-center gap-1 sm:gap-2 bg-white text-primary text-[10px] sm:text-sm font-bold px-4 py-2 sm:px-6 sm:py-3 rounded-full shadow-lg shadow-white/20 hover:scale-105 hover:bg-primary-50 hover:shadow-xl transition-all duration-300"
                   >
-                    Shop Now <ChevronRight size={18} />
+                    Shop Now <ChevronRight size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </Link>
                 </motion.div>
               </div>
