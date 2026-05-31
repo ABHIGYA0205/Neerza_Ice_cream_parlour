@@ -1,0 +1,22 @@
+{
+  "name": "Neerza Amul Ice Cream Parlour",
+  "short_name": "Neerza Amul",
+  "description": "Order fresh Amul ice cream, milk, butter, cheese & more. Browse products and order via WhatsApp.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E7",
+  "theme_color": "#ED1C24",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
