@@ -111,17 +111,21 @@ exports.createProduct = async (req, res) => {
 // @desc    Update product
 // @route   PUT /api/products/:id
 exports.updateProduct = async (req, res) => {
+
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!product) {
-      return res.status(404).json({ message: 'Product not found' });
-    }
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
     res.json(product);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: err.message });
   }
 };
 

@@ -67,6 +67,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', store: config.storeName });
 });
 
+app.use((err, req, res, next) => {
+  console.error("========== ERROR ==========");
+  console.error(err);
+  console.error("===========================");
+
+  res.status(err.status || 500).json({
+    message: err.message,
+    stack: err.stack,
+  });
+});
 // Error handler
 app.use(errorHandler);
 

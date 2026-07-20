@@ -8,6 +8,9 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
+const config = require("../config/env");
+
+
 const localStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
@@ -43,5 +46,5 @@ try {
 } catch {
   upload = multer({ storage: localStorage, fileFilter, limits: { fileSize: 5 * 1024 * 1024 } });
 }
-
+console.log("Storage:", upload.storage.constructor.name);
 module.exports = upload;
