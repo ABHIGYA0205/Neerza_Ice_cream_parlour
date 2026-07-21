@@ -75,10 +75,6 @@ npm run seed          # Seed database with sample data
 npm run dev           # → http://localhost:5000
 ```
 
-### Admin Login
-- Email: `admin@neerzaamul.com`
-- Password: `admin123`
-
 ## 📱 WhatsApp Ordering Flow
 
 1. Customer browses & adds products to cart

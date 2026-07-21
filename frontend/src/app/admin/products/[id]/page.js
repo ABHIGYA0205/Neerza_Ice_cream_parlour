@@ -20,6 +20,7 @@ export default function EditProductPage() {
     name: '', description: '', price: '', discount: '0', quantity: '',
     brand: 'Amul', category: '', stock: '', availability: true,
     isFeatured: false, isBestSeller: false, isNewArrival: false,
+    images: []
   });
 
   useEffect(() => {
@@ -43,19 +44,20 @@ export default function EditProductPage() {
   useEffect(() => {
     if (product) {
       setFormData({
-        name: product.name || '',
-        description: product.description || '',
-        price: product.price?.toString() || '',
-        discount: product.discount?.toString() || '0',
-        quantity: product.quantity || '',
-        brand: product.brand || 'Amul',
-        category: product.category?._id || product.category?.name || '',
-        stock: product.stock?.toString() || '',
-        availability: product.availability ?? true,
-        isFeatured: product.isFeatured || false,
-        isBestSeller: product.isBestSeller || false,
-        isNewArrival: product.isNewArrival || false,
-      });
+  name: product.name || '',
+  description: product.description || '',
+  price: product.price?.toString() || '',
+  discount: product.discount?.toString() || '0',
+  quantity: product.quantity || '',
+  brand: product.brand || 'Amul',
+  category: product.category?._id || product.category?.name || '',
+  stock: product.stock?.toString() || '',
+  availability: product.availability ?? true,
+  isFeatured: product.isFeatured || false,
+  isBestSeller: product.isBestSeller || false,
+  isNewArrival: product.isNewArrival || false,
+  images: product.images || [],
+});
     }
   }, [product]);
 
@@ -111,6 +113,7 @@ export default function EditProductPage() {
     const toastId = toast.loading('Uploading image...');
     try {
       const res = await uploadAPI.single(fd);
+
       // Assuming product uses 'images' array in backend
       setFormData((prev) => ({ ...prev, images: [res.data.url] }));
       setProduct((prev) => ({ ...prev, images: [res.data.url] }));
@@ -138,8 +141,18 @@ export default function EditProductPage() {
           <h3 className="text-base font-semibold text-text-primary mb-4">Current Image</h3>
           <div className="flex items-center gap-4">
             <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-cream border border-border">
-              <Image src={product.images?.[0] || '/images/icecream.jpeg'} alt={product.name} fill sizes="96px" className="object-cover" />
-            </div>
+                <Image
+                  src={
+                    formData.images?.[0] ||
+                    product.images?.[0] ||
+                    "/images/icecream.jpeg"
+                  }
+                  alt={product.name}
+                  fill
+                  sizes="96px"
+                  className="object-cover"
+                />
+              </div>
             <label className="border-2 border-dashed border-border rounded-xl p-4 flex-1 text-center hover:border-primary transition-colors cursor-pointer relative overflow-hidden block">
               <Upload size={20} className="mx-auto text-text-muted mb-1" />
               <p className="text-xs text-text-muted">Click to replace image</p>
